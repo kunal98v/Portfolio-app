@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ai-api-monitoring",
+    "title": "AI API Monitoring Platform",
+    "tagline": "Real-time observability for LLM-backed APIs",
+    "description": "A monitoring platform that tracks latency, cost, error rate, and token usage for LLM-backed APIs in real time, with alerting on anomalies.",
+    "image": "/projects/ai-api-monitoring.svg",
+    "tech": ["Node.js", "React", "Redis", "BullMQ", "Prometheus", "Grafana", "Loki", "LLM"],
+    "github": "https://github.com/kunalvibhute",
+    "demo": "",
+    "caseStudy": {
+      "problem": "Teams shipping LLM features had no visibility into latency spikes, silent failures, or runaway token costs across providers, so incidents were caught by users before engineers noticed.",
+      "solution": "Built a lightweight ingestion layer that wraps outbound LLM calls, queues events through BullMQ backed by Redis, and exposes metrics to Prometheus. Grafana dashboards visualize latency percentiles and spend, while Loki centralizes structured logs for fast incident triage.",
+      "architecture": [
+        "Client SDK wraps LLM calls and emits structured events",
+        "Redis + BullMQ queue events for async processing without blocking requests",
+        "Worker service aggregates metrics and exposes a Prometheus endpoint",
+        "Grafana dashboards for latency, cost, error rate, and token usage",
+        "Loki for centralized, queryable logs across services"
+      ],
+      "challenges": [
+        "Keeping instrumentation overhead near zero on the request hot path",
+        "Normalizing cost and token metrics across different LLM providers",
+        "Designing alert thresholds that catch real anomalies without noisy false positives"
+      ]
+    }
+  },
+  {
+    "id": "ai-pr-assistant",
+    "title": "AI Pull Request Assistant",
+    "tagline": "Automated code review powered by an LLM",
+    "description": "A GitHub bot that reviews pull requests automatically, summarizing changes, flagging risky diffs, and suggesting fixes inline.",
+    "image": "/projects/ai-pr-assistant.svg",
+    "tech": ["Node.js", "GitHub API", "Redis", "LLM", "React"],
+    "github": "https://github.com/kunalvibhute",
+    "demo": "",
+    "caseStudy": {
+      "problem": "Small engineering teams struggled to keep review turnaround fast without sacrificing quality, and repetitive review comments consumed reviewer time.",
+      "solution": "Built a GitHub App that listens to pull request webhooks, diffs the changed files, and sends context-scoped prompts to an LLM to generate a structured review: summary, risk flags, and suggested fixes as inline comments. Redis caches diff context to keep re-reviews fast.",
+      "architecture": [
+        "GitHub webhook receiver validates and queues PR events",
+        "Diff processor extracts changed hunks with surrounding context",
+        "LLM service generates a structured review (summary, risks, suggestions)",
+        "GitHub API posts inline review comments and a PR summary",
+        "React dashboard for reviewing bot activity across repositories"
+      ],
+      "challenges": [
+        "Keeping prompt context within token limits for large diffs",
+        "Avoiding duplicate or noisy comments on repeated pushes",
+        "Handling GitHub API rate limits across many repositories"
+      ]
+    }
+  },
+  {
+    "id": "image-dedup-phash",
+    "title": "Image Deduplication using Perceptual Hashing",
+    "tagline": "Finding near-duplicate images at scale",
+    "description": "A service that detects near-duplicate and visually similar images in large cloud-stored collections using perceptual hashing.",
+    "image": "/projects/image-dedup.svg",
+    "tech": ["Flask", "AWS", "Python", "Cloud Storage"],
+    "github": "https://github.com/kunalvibhute",
+    "demo": "",
+    "caseStudy": {
+      "problem": "A media-heavy application accumulated large volumes of duplicate and near-duplicate images across cloud storage, wasting storage costs and cluttering search results.",
+      "solution": "Built a Flask service that computes perceptual hashes (pHash) for uploaded images, stores them for fast similarity lookups, and flags near-duplicates using Hamming distance thresholds, with results reviewable before deletion.",
+      "architecture": [
+        "Upload trigger computes a perceptual hash for each new image",
+        "Hashes stored alongside metadata for similarity queries",
+        "Similarity search using Hamming distance over stored hashes",
+        "Flask API exposes duplicate clusters for review",
+        "AWS cloud storage for source images and processed results"
+      ],
+      "challenges": [
+        "Tuning the similarity threshold to avoid false positives on visually similar but distinct images",
+        "Scaling hash comparisons efficiently as the collection grew",
+        "Handling varied image formats and corrupted uploads gracefully"
+      ]
+    }
+  }
+]

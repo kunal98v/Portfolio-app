@@ -1,0 +1,6 @@
+[
+  { "id": "ibm", "issuer": "IBM", "title": "IBM Professional Certificate", "year": "2023" },
+  { "id": "meta", "issuer": "Meta", "title": "Meta Professional Certificate", "year": "2023" },
+  { "id": "nodejs", "issuer": "OpenJS Foundation", "title": "Node.js Application Development", "year": "2022" },
+  { "id": "microsoft", "issuer": "Microsoft", "title": "Microsoft Technology Associate (MTA)", "year": "2021" }
+]

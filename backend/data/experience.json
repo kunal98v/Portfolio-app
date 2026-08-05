@@ -1,0 +1,32 @@
+[
+  {
+    "id": "brained",
+    "company": "Brained",
+    "role": "MERN Stack Developer",
+    "period": "2023 — Present",
+    "summary": "Building an AI-powered application generation platform, designing REST APIs and agentic workflows that turn natural language into working software.",
+    "highlights": [
+      "Built core services for an AI-powered application generation platform",
+      "Designed and shipped REST APIs consumed by the React frontend and internal services",
+      "Implemented AI agents and MCP-based tool integrations for autonomous workflows",
+      "Built RAG pipelines backed by vector databases for grounded generation",
+      "Set up observability with Prometheus, Grafana, and Loki for backend services"
+    ],
+    "stack": ["Node.js", "React", "MCP", "RAG", "Vector DB", "Prometheus", "Grafana", "Loki"]
+  },
+  {
+    "id": "fyntune",
+    "company": "FynTune",
+    "role": "Software Developer",
+    "period": "2022 — 2023",
+    "summary": "Owned backend modules in a Laravel codebase, focused on query performance, background processing, and system reliability.",
+    "highlights": [
+      "Built and maintained REST APIs in Laravel",
+      "Optimized SQL queries, cutting response times on high-traffic endpoints",
+      "Implemented background jobs and queues for async processing",
+      "Built internal backend modules for core business logic",
+      "Profiled and improved performance across the backend"
+    ],
+    "stack": ["Laravel", "PHP", "SQL", "Jobs & Queues", "REST APIs"]
+  }
+]
