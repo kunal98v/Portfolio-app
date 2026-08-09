@@ -29,7 +29,7 @@ export default function Hero() {
           </h2>
           <p className="mt-6 max-w-lg text-muted leading-relaxed">
             Building scalable backend systems, AI agents, MCP servers, RAG
-            applications, and production-grade web platforms.
+            applications, and production-grade web platforms. and i m mastering ci cd .
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
