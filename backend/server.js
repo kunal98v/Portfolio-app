@@ -24,6 +24,12 @@ app.use("/api/certifications", certificationsRouter);
 app.use("/api/contact", contactRouter);
 app.use("/api/github", githubRouter);
 app.use("/api/resume", resumeRouter);
+app.get("/api/docker-test", (req, res) => {
+  res.json({
+    message: "Hello from Docker!",
+    version: "v2"
+  });
+});
 
 // 404 handler
 app.use((req, res) => res.status(404).json({ error: "Not found" }));
@@ -34,12 +40,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong on the server" });
 });
 
-app.get("/api/docker-test", (req, res) => {
-  res.json({
-    message: "Hello from Docker!",
-    version: "v2"
-  });
-});
+
 
 app.listen(PORT, () => {
   console.log(`Portfolio API running at http://localhost:${PORT}`);
