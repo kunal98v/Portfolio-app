@@ -34,6 +34,13 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong on the server" });
 });
 
+app.get("/api/docker-test", (req, res) => {
+  res.json({
+    message: "Hello from Docker!",
+    version: "v2"
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Portfolio API running at http://localhost:${PORT}`);
 });
