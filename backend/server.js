@@ -8,6 +8,17 @@ const certificationsRouter = require("./routes/certifications");
 const contactRouter = require("./routes/contact");
 const githubRouter = require("./routes/github");
 const resumeRouter = require("./routes/resume");
+const { createClient } = require("redis");
+
+const redisClient = createClient({
+  url: process.env.REDIS_URL || "redis://localhost:6379"
+});
+
+redisClient.on("error", (err) => {
+  console.error("Redis error:", err);
+});
+
+redisClient.connect();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +40,13 @@ app.get("/api/docker-test", (req, res) => {
     message: "Hello from Docker!",
     version: "v2"
   });
+});
+
+app.get("/api/redis-test", async (req, res) => {
+  await redisClient.set("docker_test", "Redis is working!");
+  const value = await redisClient.get("docker_test");
+
+  res.json({ value });
 });
 
 // 404 handler
